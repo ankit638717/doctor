@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Sign-up and Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            float: left;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Doctor Sign-up</h2>
+        <form id="signup-form">
+            <input type="text" id="signup-username" placeholder="Username" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <input type="submit" value="Sign Up">
+        </form>
+        <h2>Doctor Login</h2>
+        <form id="login-form">
+            <input type="text" id="login-username" placeholder="Username" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 Doctor Sign-up and Login</p>
+    </footer>
+
+    <script>
+        // Dummy user data
+        const users = [
+            { username: 'doctor1', password: 'password1' },
+            { username: 'doctor2', password: 'password2' }
+        ];
+
+        // Function to handle sign up
+        function signUp( event ) {
+            event.preventDefault();
+            const username = document.getElementById( 'signup-username' ).value;
+            const password = document.getElementById( 'signup-password' ).value;
+            users.push( { username, password } );
+            alert( 'Sign up successful! Please login.' );
+        }
+
+        // Function to handle login
+        function login( event ) {
+            event.preventDefault();
+            const username = document.getElementById( 'login-username' ).value;
+            const password = document.getElementById( 'login-password' ).value;
+            const foundUser = users.find( user => user.username === username && user.password === password );
+            if ( foundUser ) {
+                alert( 'Login successful!' );
+                // Redirect to dashboard or do other actions
+            } else {
+                alert( 'Invalid username or password. Please try again.' );
+            }
+        }
+
+        // Attach event listeners
+        document.getElementById( 'signup-form' ).addEventListener( 'submit', signUp );
+        document.getElementById( 'login-form' ).addEventListener( 'submit', login );
+    </script>
+</body>
+
+</html>
